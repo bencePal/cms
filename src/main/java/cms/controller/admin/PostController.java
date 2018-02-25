@@ -61,10 +61,10 @@ public class PostController {
         return "admin/edit-post";
     }
 
-    @RequestMapping(value = "/admin/post/{postId}/update", method = RequestMethod.POST)
-    public String updatePost(@PathVariable Long postId, Post post) {
+    @RequestMapping(value = "/admin/post/update", method = RequestMethod.POST)
+    public String updatePost(Post post) {
         post.setPosted(currentTimeService.getCurrentTime());
-        System.out.println(post.getId());;
+        postService.savePost(post);
         return "redirect:/admin/post/";
     }
 }

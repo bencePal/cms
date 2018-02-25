@@ -13,6 +13,7 @@
 <body>
 
 <h1>Post page</h1>
+<a href="/admin/">Back</a><br />
 <a href="/admin/post/create-post">Create post</a>
 
 <h2>Post list</h2>
@@ -26,6 +27,7 @@
             </form>
         </span> |
         <a th:href="@{'/admin/post/' + ${post.id}+ '/update'}">Update</a>
+        <hr />
     </h5>
 </div>
 </body>
