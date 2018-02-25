@@ -2,6 +2,7 @@ package cms.model;
 
 import javax.persistence.*;
 import java.util.List;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "cms_post")
@@ -19,11 +20,20 @@ public class Post {
 
     private String title;
 
+    @Column(columnDefinition = "TEXT")
     private String content;
 
-    //date -> timestamp
+    private Timestamp posted;
 
     public Post() {
+    }
+
+    public Post(User user, List<Category> categories, String title, String content, Timestamp posted) {
+        this.user = user;
+        this.categories = categories;
+        this.title = title;
+        this.content = content;
+        this.posted = posted;
     }
 
     public Post(User user, List<Category> categories, String title, String content) {
@@ -71,5 +81,13 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Timestamp getPosted() {
+        return posted;
+    }
+
+    public void setPosted(Timestamp posted) {
+        this.posted = posted;
     }
 }

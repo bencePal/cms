@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Homepage | cms</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+
+</head>
+
+<body>
+
+<h1>this is the homepage</h1>
+<h3>nice header</h3>
+
+<div th:each="post : ${posts}">
+    <h2 th:text="${post.title}"></h2>
+    <p>Posted: <span th:text="${#dates.format(post.posted, 'yyyy-MM-dd HH:mm')}"></span></p>
+    <p th:text="${post.content}"></p>
+</div>
+</body>
+</html>

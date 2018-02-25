@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Post | Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+
+</head>
+
+<body>
+
+<h1>Post page</h1>
+<a href="/admin/">Back</a><br />
+<a href="/admin/post/create-post">Create post</a>
+
+<h2>Post list</h2>
+<div th:each="post : ${posts}">
+    <h5>
+        <span th:text="${post.title}"></span> |
+        <span th:text="${#dates.format(post.posted, 'yyyy-MM-dd HH:mm')}"></span> |
+        <span>
+            <form th:action="@{'/admin/post/' + ${post.id}+ '/delete'}" method="post">
+                <input class="btn btn-primary" type="submit" value="Delete"/>
+            </form>
+        </span> |
+        <a th:href="@{'/admin/post/' + ${post.id}+ '/update'}">Update</a>
+        <hr />
+    </h5>
+</div>
+</body>
+</html>

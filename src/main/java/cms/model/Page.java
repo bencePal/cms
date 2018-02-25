@@ -19,6 +19,7 @@ public class Page {
 
     private String title;
 
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     public long getId() {
