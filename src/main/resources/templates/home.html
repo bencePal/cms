@@ -13,13 +13,20 @@
 
 <body>
 
-<h1>this is the homepage</h1>
-<h3>nice header</h3>
+    <h1>this is the homepage</h1>
+    <h3>nice header</h3>
+    <div th:each="post : ${posts}">
+        <h2 th:text="${post.title}"></h2>
+        <p>Posted: <span th:text="${#dates.format(post.posted, 'yyyy-MM-dd HH:mm')}"></span></p>
 
-<div th:each="post : ${posts}">
-    <h2 th:text="${post.title}"></h2>
-    <p>Posted: <span th:text="${#dates.format(post.posted, 'yyyy-MM-dd HH:mm')}"></span></p>
-    <p th:text="${post.content}"></p>
-</div>
+        <div th:if="${#strings.length(post.content) ge 100}">
+            <p th:text="${#strings.substring(post.content, 0, 100) + ' ...'}"></p>
+            <a th:href="@{'/post/' + ${post.id}}">Read more</a>
+        </div>
+        <div th:if="${#strings.length(post.content) le 100} ">
+            <p th:text="${post.content}"></p>
+        </div>
+
+    </div>
 </body>
 </html>
