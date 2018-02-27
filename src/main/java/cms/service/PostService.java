@@ -32,4 +32,6 @@ public class PostService {
     public Post findPostById(Long id) {
         return postRepository.findOne(id);
     }
+
+
 }
