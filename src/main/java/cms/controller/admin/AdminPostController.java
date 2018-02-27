@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-public class PostController {
+public class AdminPostController {
 
     private PostService postService;
     private CurrentTimeService currentTimeService;
