@@ -28,43 +28,45 @@ public class AdminPostController {
         this.currentTimeService = currentTimeService;
     }
 
-    @RequestMapping(value = "/admin/post", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/admin/posts", method = RequestMethod.GET)
     public String postPage(Model model) {
         List<Post> posts = postService.getAllPost();
         model.addAttribute("posts", posts);
-        return "admin/post";
+        return "admin/post-list";
     }
-    @RequestMapping(value = "/admin/post/create-post", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/admin/posts/create-post", method = RequestMethod.GET)
     public String createPostPage(Model model) {
         Post post = new Post();
         model.addAttribute("post", post);
         return "admin/create-post";
     }
 
-    @RequestMapping(value = "/admin/post/create-post", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/posts/create-post", method = RequestMethod.POST)
     public String savePost(Post post) {
         post.setPosted(currentTimeService.getCurrentTime());
         postService.savePost(post);
-        return "redirect:/admin/post";
+        return "redirect:/admin/posts";
     }
 
-    @RequestMapping(value = "/admin/post/{postId}/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/posts/{postId}/delete", method = RequestMethod.POST)
     public String deletePost(@PathVariable Long postId) {
         postService.deletePostById(postId);
-        return "redirect:/admin/post";
+        return "redirect:/admin/posts";
     }
 
-    @RequestMapping(value = "/admin/post/{postId}/update", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/posts/{postId}/update", method = RequestMethod.GET)
     public String updatePostPage(@PathVariable Long postId, Model model) {
         Post post = postService.findPostById(postId);
         model.addAttribute("post", post);
         return "admin/edit-post";
     }
 
-    @RequestMapping(value = "/admin/post/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/posts/update", method = RequestMethod.POST)
     public String updatePost(Post post) {
         post.setPosted(currentTimeService.getCurrentTime());
         postService.savePost(post);
-        return "redirect:/admin/post/";
+        return "redirect:/admin/posts/";
     }
 }
