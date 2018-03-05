@@ -1,7 +1,9 @@
 package cms.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "cms_category")
@@ -12,10 +14,12 @@ public class Category {
     private long id;
 
     @ManyToMany(mappedBy = "categories")
-    private List<Post> posts;
+    private Set<Post> posts = new HashSet<>();
+
 
     @ManyToMany(mappedBy = "categories")
-    private List<Page> pages;
+    private Set<Page> pages = new HashSet<>();
+
 
     private String name;
 
@@ -27,19 +31,19 @@ public class Category {
         this.id = id;
     }
 
-    public List<Post> getPosts() {
+    public Set<Post> getPosts() {
         return posts;
     }
 
-    public void setPosts(List<Post> posts) {
+    public void setPosts(Set<Post> posts) {
         this.posts = posts;
     }
 
-    public List<Page> getPages() {
+    public Set<Page> getPages() {
         return pages;
     }
 
-    public void setPages(List<Page> pages) {
+    public void setPages(Set<Page> pages) {
         this.pages = pages;
     }
 
