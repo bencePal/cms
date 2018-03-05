@@ -20,7 +20,6 @@ public class HomeController {
         this.postService = postService;
     }
 
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homePage(Model model) {
         List<Post> allPost = postService.getAllPost();

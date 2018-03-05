@@ -1,8 +1,11 @@
 package cms.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name = "cms_post")
@@ -15,8 +18,13 @@ public class Post {
     @ManyToOne
     private User user;
 
-    @ManyToMany
-    private List<Category> categories;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "cms_post_category",
+            joinColumns = {@JoinColumn(name = "post_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")}
+    )
+    private Set<Category> categories = new HashSet<>();
 
     private String title;
 
@@ -26,21 +34,6 @@ public class Post {
     private Timestamp posted;
 
     public Post() {
-    }
-
-    public Post(User user, List<Category> categories, String title, String content, Timestamp posted) {
-        this.user = user;
-        this.categories = categories;
-        this.title = title;
-        this.content = content;
-        this.posted = posted;
-    }
-
-    public Post(User user, List<Category> categories, String title, String content) {
-        this.user = user;
-        this.categories = categories;
-        this.title = title;
-        this.content = content;
     }
 
     public long getId() {
@@ -59,11 +52,11 @@ public class Post {
         this.user = user;
     }
 
-    public List<Category> getCategories() {
+    public Set<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<Category> categories) {
+    public void setCategories(Set<Category> categories) {
         this.categories = categories;
     }
 

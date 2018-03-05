@@ -33,5 +33,4 @@ public class PostService {
         return postRepository.findOne(id);
     }
 
-
 }

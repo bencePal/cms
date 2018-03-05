@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Login | cms</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+
+</head>
+
+<body>
+
+    <h1>this is the loginpage</h1>
+    <h3>nice header</h3>
+    <div>
+        <form name="login" th:action="@{/login}" method="post">
+            <p class="error" th:if="${param.error}">Wrong username and/or password</p>
+            <p class="success" th:if="${param.logout}">Successfully logged out</p>
+            <input type="text" id="username" name="username" placeholder="Username" />
+            <input type="password" id="password" name="password" placeholder="Password" />
+            <button type="submit">Login</button>
+        </form>
+        <a href="/registration">Registration</a>
+    </div>
+</body>
+</html>

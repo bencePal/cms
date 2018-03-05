@@ -14,7 +14,7 @@
 
 <h1>Post page</h1>
 <a href="/admin/">Back</a><br />
-<a href="/admin/post/create-post">Create post</a>
+<a href="/admin/posts/create-post">Create post</a>
 
 <h2>Post list</h2>
 <div th:each="post : ${posts}">
@@ -22,11 +22,11 @@
         <span th:text="${post.title}"></span> |
         <span th:text="${#dates.format(post.posted, 'yyyy-MM-dd HH:mm')}"></span> |
         <span>
-            <form th:action="@{'/admin/post/' + ${post.id}+ '/delete'}" method="post">
+            <form th:action="@{'/admin/posts/' + ${post.id}+ '/delete'}" method="post">
                 <input class="btn btn-primary" type="submit" value="Delete"/>
             </form>
         </span> |
-        <a th:href="@{'/admin/post/' + ${post.id}+ '/update'}">Update</a>
+        <a th:href="@{'/admin/posts/' + ${post.id}+ '/update'}">Update</a>
         <hr />
     </h5>
 </div>
