@@ -1,7 +1,8 @@
 package cms.model;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "cms_page")
@@ -14,8 +15,13 @@ public class Page {
     @ManyToOne
     private User user;
 
-    @ManyToMany
-    private List<Category> categories;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "cms_page_category",
+            joinColumns = {@JoinColumn(name = "page_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")}
+    )
+    private Set<Category> categories = new HashSet<>();
 
     private String title;
 
@@ -38,11 +44,11 @@ public class Page {
         this.user = user;
     }
 
-    public List<Category> getCategories() {
+    public Set<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<Category> categories) {
+    public void setCategories(Set<Category> categories) {
         this.categories = categories;
     }
 
