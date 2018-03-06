@@ -1,6 +1,7 @@
 package cms.controller;
 
 import cms.model.Post;
+import cms.service.CategoryService;
 import cms.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,16 +15,18 @@ import java.util.List;
 public class HomeController {
 
     private PostService postService;
+    private CategoryService categoryService;
 
     @Autowired
-    public void setPostService(PostService postService) {
+    public HomeController(PostService postService, CategoryService categoryService) {
         this.postService = postService;
+        this.categoryService = categoryService;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homePage(Model model) {
-        List<Post> allPost = postService.getAllPost();
-        model.addAttribute("posts", allPost);
+        model.addAttribute("posts", postService.getAllPost());
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "home";
     }
 }
