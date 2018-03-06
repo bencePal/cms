@@ -28,5 +28,14 @@
         </div>
         <hr />
     </div>
+    <hr />
+    <hr />
+    <div class="categories">
+        <h3>Categories</h3>
+        <th:block th:each="category : ${categories}">
+            <a th:text="${category.name}" th:href="'/category/' + ${category.id}"></a>
+        </th:block>
+    </div>
+    <br /><br />
 </body>
 </html>
