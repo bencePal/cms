@@ -31,6 +31,7 @@ public class Post {
     @Column(columnDefinition = "TEXT")
     private String content;
 
+    @Column(name = "timestamp")
     private Timestamp posted;
 
     public Post() {
