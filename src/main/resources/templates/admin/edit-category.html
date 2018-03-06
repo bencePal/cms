@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Create category | Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+
+</head>
+
+<body>
+
+    <h1>Edit category</h1>
+
+    <a href="/admin/categories/">Back</a>
+
+    <form th:action="@{'/admin/categories/update'}" th:object="${category}" method="post">
+
+        <div class="form-group">
+            <label for="title">Name</label>
+            <input type="text" class="form-control" id="title" th:field="*{name}" required="true" />
+        </div>
+        <input type="hidden" class="form-control" id="hidden" th:field="*{id}" />
+        <input class="btn btn-primary" type="submit" value="Update post"/>
+
+    </form>
+
+</body>
+</html>
