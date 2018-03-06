@@ -16,10 +16,8 @@ public class Category {
     @ManyToMany(mappedBy = "categories")
     private Set<Post> posts = new HashSet<>();
 
-
     @ManyToMany(mappedBy = "categories")
     private Set<Page> pages = new HashSet<>();
-
 
     private String name;
 

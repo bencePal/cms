@@ -1,6 +1,7 @@
 package cms.controller.admin;
 
 import cms.model.Post;
+import cms.service.CategoryService;
 import cms.service.CurrentTimeService;
 import cms.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,29 +18,26 @@ public class AdminPostController {
 
     private PostService postService;
     private CurrentTimeService currentTimeService;
+    private CategoryService categoryService;
 
     @Autowired
-    public void setPostService(PostService postService) {
+    public AdminPostController(PostService postService, CurrentTimeService currentTimeService, CategoryService categoryService) {
         this.postService = postService;
-    }
-
-    @Autowired
-    public void setCurrentTimeService(CurrentTimeService currentTimeService) {
         this.currentTimeService = currentTimeService;
+        this.categoryService = categoryService;
     }
-
 
     @RequestMapping(value = "/admin/posts", method = RequestMethod.GET)
-    public String postPage(Model model) {
+    public String postList(Model model) {
         List<Post> posts = postService.getAllPost();
         model.addAttribute("posts", posts);
         return "admin/post-list";
     }
 
     @RequestMapping(value = "/admin/posts/create-post", method = RequestMethod.GET)
-    public String createPostPage(Model model) {
-        Post post = new Post();
-        model.addAttribute("post", post);
+    public String createPost(Model model) {
+        model.addAttribute("allCategories", categoryService.getAllCategories());
+        model.addAttribute("post", new Post());
         return "admin/create-post";
     }
 
@@ -57,14 +55,14 @@ public class AdminPostController {
     }
 
     @RequestMapping(value = "/admin/posts/{postId}/update", method = RequestMethod.GET)
-    public String updatePostPage(@PathVariable Long postId, Model model) {
-        Post post = postService.findPostById(postId);
-        model.addAttribute("post", post);
+    public String updatePost(@PathVariable Long postId, Model model) {
+        model.addAttribute("allCategories", categoryService.getAllCategories());
+        model.addAttribute("post", postService.findPostById(postId));
         return "admin/edit-post";
     }
 
     @RequestMapping(value = "/admin/posts/update", method = RequestMethod.POST)
-    public String updatePost(Post post) {
+    public String updatePostEnd(Post post) {
         post.setPosted(currentTimeService.getCurrentTime());
         postService.savePost(post);
         return "redirect:/admin/posts/";

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Category | Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+
+</head>
+
+<body>
+
+<h1>Category page</h1>
+<a href="/admin/">Back</a><br />
+<a href="/admin/categories/create-category">Create category</a>
+
+<h2>Category list</h2>
+<div th:each="category : ${categories}">
+    <h5>
+        <span th:text="${category.name}"></span> |
+        <span>
+            <form th:action="@{'/admin/categories/' + ${category.id}+ '/delete'}" method="post">
+                <input class="btn btn-primary" type="submit" value="Delete"/>
+            </form>
+        </span> |
+        <a th:href="@{'/admin/categories/' + ${category.id}+ '/update'}">Update</a>
+        <hr />
+    </h5>
+</div>
+</body>
+</html>
