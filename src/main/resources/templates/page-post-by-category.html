@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title> | categorypage | cms</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+
+</head>
+
+<body>
+
+<h1>this is the categorypage</h1>
+<h3>nice header</h3>
+<a href="/">Back</a>
+
+<h3>Posts</h3>
+<th:block th:each="post : ${posts}">
+    <p>
+        <a th:text="${post.title}" th:href="@{'/post/' + ${post.id}}"></a>
+    </p>
+</th:block>
+
+
+</body>
+</html>
