@@ -18,7 +18,7 @@ public class Post {
     @ManyToOne
     private User user;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "cms_post_category",
             joinColumns = {@JoinColumn(name = "post_id")},
@@ -31,7 +31,6 @@ public class Post {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    @Column(name = "timestamp")
     private Timestamp posted;
 
     public Post() {

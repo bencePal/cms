@@ -1,6 +1,7 @@
 package cms.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ public class Page {
     @ManyToOne
     private User user;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "cms_page_category",
             joinColumns = {@JoinColumn(name = "page_id")},
@@ -27,6 +28,8 @@ public class Page {
 
     @Column(columnDefinition = "TEXT")
     private String content;
+
+    private Timestamp posted;
 
     public long getId() {
         return id;
@@ -66,5 +69,13 @@ public class Page {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Timestamp getPosted() {
+        return posted;
+    }
+
+    public void setPosted(Timestamp posted) {
+        this.posted = posted;
     }
 }

@@ -13,16 +13,24 @@
 
 <body>
 
-<h1>this is the categorypage</h1>
-<h3>nice header</h3>
-<a href="/">Back</a>
+    <h1>this is the categorypage</h1>
+    <h3>nice header</h3>
+    <a href="/">Back</a>
 
-<h3>Posts</h3>
-<th:block th:each="post : ${posts}">
-    <p>
-        <a th:text="${post.title}" th:href="@{'/post/' + ${post.id}}"></a>
-    </p>
-</th:block>
+    <h3>Posts</h3>
+    <th:block th:each="post : ${posts}">
+        <p>
+            <a th:text="${post.title}" th:href="@{'/post/' + ${post.id}}"></a>
+        </p>
+    </th:block>
+
+    <h3>Pages</h3>
+
+    <th:block th:each="page : ${pages}">
+        <p>
+            <a th:text="${page.title}" th:href="@{'/page/' + ${page.id}}"></a>
+        </p>
+    </th:block>
 
 
 </body>

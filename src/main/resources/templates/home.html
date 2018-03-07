@@ -15,6 +15,15 @@
 
     <h1>this is the homepage</h1>
     <h3>nice header</h3>
+    <hr />
+    <h3>menüke</h3>
+    <ul>
+    <th:block>
+        <li th:each="page : ${pages}">
+            <a th:text="${page.title}" th:href="@{'/page/' + ${page.id}}"></a>
+        </li>
+    </th:block>
+    </ul>
     <div th:each="post : ${posts}">
         <h2 th:text="${post.title}"></h2>
         <p>Posted: <span th:text="${#dates.format(post.posted, 'yyyy-MM-dd HH:mm')}"></span></p>
