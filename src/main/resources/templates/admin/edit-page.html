@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Create page | Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+
+</head>
+
+<body>
+
+<h1>Edit page</h1>
+
+<a href="/admin/pages/">Back</a>
+
+<form th:action="@{'/admin/pages/update'}" th:object="${page}" method="post">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" th:field="*{title}" required="true" />
+    </div>
+
+    <input type="hidden" class="form-control" id="hidden" th:field="*{id}" />
+
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea class="form-control" id="content" rows="5" th:field="*{content}" required="true"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>category</label>
+        <div th:each="category : ${allCategories}">
+            <input type="checkbox" th:value="${category.id}" th:field="*{categories}"/>
+            <span th:text="${category.name}"></span>
+        </div>
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Update page"/>
+</form>
+</body>
+</html>
