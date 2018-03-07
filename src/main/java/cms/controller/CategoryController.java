@@ -2,6 +2,7 @@ package cms.controller;
 
 import cms.model.Category;
 import cms.service.CategoryService;
+import cms.service.PageService;
 import cms.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CategoryController {
     private PostService postService;
     private CategoryService categoryService;
+    private PageService pageService;
 
     @Autowired
-    public CategoryController(PostService postService, CategoryService categoryService) {
+    public CategoryController(PostService postService, CategoryService categoryService, PageService pageService) {
         this.postService = postService;
         this.categoryService = categoryService;
+        this.pageService = pageService;
     }
 
 
@@ -26,7 +29,7 @@ public class CategoryController {
     public String postsAndPagesByCategory(Model model, @PathVariable Long categoryId) {
         Category category = categoryService.findCategoryById(categoryId);
         model.addAttribute("posts", postService.getAllPostByCategoryId(category));
-        //model.addAttribute("posts", categoryService.getAllPageByCategoryId(categoryId));
+        model.addAttribute("pages", pageService.getAllPageByCategoryId(category));
         return "page-post-by-category";
     }
 }
