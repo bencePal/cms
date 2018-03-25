@@ -1,6 +1,5 @@
 package cms.repository;
 
-import cms.model.Category;
 import cms.model.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -12,6 +11,6 @@ public interface PageRepository extends JpaRepository<Page, Long> {
 
     List<Page> findAllByOrderByPostedDesc();
 
-    List<Page> findAllByCategories(Category category);
+    List<Page> findAllByCategoriesId(Long id);
 
 }

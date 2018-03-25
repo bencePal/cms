@@ -1,6 +1,5 @@
 package cms.service;
 
-import cms.model.Category;
 import cms.model.Page;
 import cms.repository.PageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ public class PageService {
         return pageRepository.findOne(id);
     }
 
-    public List<Page> getAllPageByCategoryId(Category category) {
-        return pageRepository.findAllByCategories(category);
+    public List<Page> getAllPageByCategoryId(Long id) {
+        return pageRepository.findAllByCategoriesId(id);
     }
 }

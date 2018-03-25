@@ -29,6 +29,10 @@ public class CategoryService {
         return categoryRepository.findOne(categoryId);
     }
 
+    public String getCategoryName(Long categoryId) {
+        return findCategoryById(categoryId).getName();
+    }
+
     public void deleteCategoryById(Long categoryId) {
         categoryRepository.delete(categoryId);
     }

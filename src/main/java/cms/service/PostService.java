@@ -1,6 +1,5 @@
 package cms.service;
 
-import cms.model.Category;
 import cms.model.Post;
 import cms.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +33,8 @@ public class PostService {
         return postRepository.findOne(id);
     }
 
-    public List<Post> getAllPostByCategoryId(Category category) {
-        return postRepository.findAllByCategories(category);
+    public List<Post> getAllPostByCategoryId(Long id) {
+        return postRepository.findAllByCategoriesId(id);
     }
 
 }
