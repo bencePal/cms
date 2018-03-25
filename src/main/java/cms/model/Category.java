@@ -52,4 +52,14 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
+
+    @PreRemove
+    public void removePostAndPageCategory() {
+        for (Post post : posts ) {
+            post.getCategories().remove(this);
+        }
+        for (Page page : pages) {
+            page.getCategories().remove(this);
+        }
+    }
 }
