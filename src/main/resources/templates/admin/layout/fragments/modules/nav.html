@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<div class="nav" th:fragment="nav">
+
+    <div class="uk-width-1-1">
+        <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+            <li class="uk-parent">
+                <a href="#">Post</a>
+                <ul class="uk-nav-sub">
+                    <li><a href="/admin/posts/create-post">Create Post</a></li>
+                    <li><a href="/admin/posts">Posts</a></li>
+                </ul>
+            </li>
+            <li class="uk-parent">
+                <a href="#">Page</a>
+                <ul class="uk-nav-sub">
+                    <li><a href="/admin/pages/create-page">Create Page</a></li>
+                    <li><a href="/admin/pages">Pages</a></li>
+                </ul>
+            </li>
+            <li class="uk-parent">
+                <a href="#">Category</a>
+                <ul class="uk-nav-sub">
+                    <li><a href="/admin/categories/create-category">Create Category</a></li>
+                    <li><a href="/admin/categories">Categories</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

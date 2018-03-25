@@ -1,42 +1,48 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="admin/layout/main-admin">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <title>Create post | Admin</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
 
 </head>
 
 <body>
 
-<h1>Create post</h1>
+<div layout:fragment="content">
 
-<a href="/admin/posts/">Back</a>
+    <h1 class="uk-align-left uk-margin-remove-bottom">Create post</h1>
 
-<form th:action="@{/admin/posts/create-post}" th:object="${post}" method="post">
+    <a href="/admin/posts/" class="uk-button uk-button-primary uk-align-right uk-margin-remove-bottom uk-margin-small-top">Back</a>
 
-    <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" th:field="*{title}" required="true" />
-    </div>
+    <div class="uk-clearfix"></div>
 
-    <div class="form-group">
-        <label for="content">Content</label>
-        <textarea class="form-control" id="content" rows="5" th:field="*{content}" required="true"></textarea>
-    </div>
+    <form th:action="@{/admin/posts/create-post}" th:object="${post}" method="post" class="uk-form-stacked uk-margin-top">
 
-    <div class="form-group">
-        <label>category</label>
-        <div th:each="category : ${allCategories}">
-            <input type="checkbox" th:value="${category.id}" th:field="*{categories}"/>
-            <span th:text="${category.name}"></span>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="title">Title</label>
+            <input type="text" class="uk-input" id="title" th:field="*{title}" required="true" />
         </div>
-    </div>
 
-    <input class="btn btn-primary" type="submit" value="Create post"/>
-</form>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="content">Content</label>
+            <textarea class="uk-textarea" id="content" rows="5" th:field="*{content}" required="true"></textarea>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label">Category</label>
+            <label th:each="category : ${allCategories}" class="uk-form-label">
+                <input class="uk-checkbox" type="checkbox" th:value="${category.id}" th:field="*{categories}"/>
+                <span th:text="${category.name}"></span>
+            </label>
+        </div>
+
+        <input class="uk-button uk-button-primary" type="submit" value="Create post"/>
+    </form>
+
+</div>
+
 </body>
 </html>

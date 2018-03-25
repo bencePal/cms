@@ -1,31 +1,36 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="admin/layout/main-admin">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Admin | cms</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <title>Home | Admin</title>
 
 </head>
 
 <body>
-    <h1>Admin homepage</h1>
-    <ul>
-        <li><a href="/">Website</a></li>
-        <li><a href="/admin/posts">Posts</a></li>
-        <li><a href="/admin/categories">Categories</a></li>
-        <li><a href="/admin/pages">Pages</a></li>
-    </ul>
 
-    <ul>
-        <li>
-            <form th:action="@{'/logout'}" method="post">
-                <input class="btn btn-primary" type="submit" value="logout"/>
-            </form>
-        </li>
-    </ul>
+    <div layout:fragment="content">
+
+        <div class="uk-child-width-1-2@s uk-grid-collapse uk-text-center" uk-grid>
+            <a href="/admin/posts">
+                <div class="uk-tile uk-tile-muted">
+                    <p class="uk-h4">Post</p>
+                </div>
+            </a>
+            <a href="/admin/pages">
+                <div class="uk-tile uk-tile-primary">
+                    <p class="uk-h4">Page</p>
+                </div>
+            </a>
+            <a href="/admin/categories">
+                <div class="uk-tile uk-tile-secondary">
+                    <p class="uk-h4">Category</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
 </body>
 </html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+
+<div class="header" th:fragment="header">
+
+    <a href="/admin" class="logo admin"><i class="fas fa-cog fa-spin"></i><span>Admin</span></a>
+
+    <div th:replace="admin/layout/fragments/modules/menu :: menu"></div>
+
+</div>
+
+</body>
+</html>

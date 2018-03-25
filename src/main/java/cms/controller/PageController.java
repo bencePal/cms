@@ -1,9 +1,7 @@
 package cms.controller;
 
-import cms.model.Page;
-import cms.model.Post;
+import cms.service.CategoryService;
 import cms.service.PageService;
-import cms.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,18 +13,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PageController {
 
     private PageService pageService;
+    private CategoryService categoryService;
 
     @Autowired
-    public void setPageService(PageService pageService) {
+    public PageController(PageService pageService, CategoryService categoryService) {
         this.pageService = pageService;
+        this.categoryService = categoryService;
     }
 
     @RequestMapping(path = "/page/{pageId}", method = RequestMethod.GET)
     public String pageDetails(@PathVariable Long pageId, Model model)  {
-        Page page = pageService.findPageById(pageId);
-        model.addAttribute("page", page);
+        model.addAttribute("menu", pageService.getAllPage());
+        model.addAttribute("page", pageService.findPageById(pageId));
+        model.addAttribute("allCategories", categoryService.getAllCategories());
         return "page";
     }
-
-
 }

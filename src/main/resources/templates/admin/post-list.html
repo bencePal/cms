@@ -1,34 +1,46 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="admin/layout/main-admin">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Post | Admin</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <title>Posts | Admin</title>
 
 </head>
 
 <body>
 
-<h1>Post page</h1>
-<a href="/admin/">Back</a><br />
-<a href="/admin/posts/create-post">Create post</a>
+<div layout:fragment="content">
 
-<h2>Post list</h2>
-<div th:each="post : ${posts}">
-    <h5>
-        <span th:text="${post.title}"></span> |
-        <span th:text="${#dates.format(post.posted, 'yyyy-MM-dd HH:mm')}"></span> |
-        <span>
-            <form th:action="@{'/admin/posts/' + ${post.id}+ '/delete'}" method="post">
-                <input class="btn btn-primary" type="submit" value="Delete"/>
-            </form>
-        </span> |
-        <a th:href="@{'/admin/posts/' + ${post.id}+ '/update'}">Update</a>
-        <hr />
-    </h5>
+    <h1 class="uk-align-left uk-margin-remove-bottom">Posts</h1>
+
+    <a href="/admin/posts/create-post" class="uk-button uk-button-primary uk-align-right uk-margin-remove-bottom uk-margin-small-top">Create post</a>
+
+    <div class="uk-clearfix"></div>
+
+    <div class="uk-overflow-auto">
+
+        <table class="uk-table uk-table-middle uk-table-responsive uk-table-divider uk-table-small uk-margin-top">
+            <tbody>
+                <tr th:each="post : ${posts}">
+                    <td>
+                        <span th:text="${post.title}"></span><br />
+                        <span th:text="${#dates.format(post.posted, 'yyyy-MM-dd HH:mm')}"></span>
+                    </td>
+                    <td>
+                        <a class="uk-button uk-button-secondary" th:href="@{'/admin/posts/' + ${post.id}+ '/update'}">Update</a>
+                    </td>
+                    <td>
+                        <form th:action="@{'/admin/posts/' + ${post.id}+ '/delete'}" method="post">
+                            <input class="uk-button uk-button-danger" type="submit" value="Delete"/>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
 </div>
 </body>
 </html>

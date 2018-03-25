@@ -1,37 +1,35 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout/main">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title> | categorypage | cms</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <title>By categories | cms</title>
 
 </head>
 
 <body>
 
-    <h1>this is the categorypage</h1>
-    <h3>nice header</h3>
-    <a href="/">Back</a>
+
+
+<div layout:fragment="content">
+
+    <h1 class="title" th:text="'Content by ' + ${categoryName}">Categories</h1>
 
     <h3>Posts</h3>
-    <th:block th:each="post : ${posts}">
-        <p>
-            <a th:text="${post.title}" th:href="@{'/post/' + ${post.id}}"></a>
-        </p>
-    </th:block>
+    <ul>
+        <th:block th:each="post : ${posts}">
+        <li><a th:text="${post.title}" th:href="@{'/post/' + ${post.id}}"></a></li>
+        </th:block>
+    </ul>
 
     <h3>Pages</h3>
-
-    <th:block th:each="page : ${pages}">
-        <p>
-            <a th:text="${page.title}" th:href="@{'/page/' + ${page.id}}"></a>
-        </p>
-    </th:block>
-
-
+    <ul>
+        <th:block th:each="page : ${pages}">
+        <li><a th:text="${page.title}" th:href="@{'/page/' + ${page.id}}"></a></li>
+        </th:block>
+    </ul>
+</div>
 </body>
 </html>

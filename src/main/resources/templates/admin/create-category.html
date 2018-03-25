@@ -1,29 +1,35 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="admin/layout/main-admin">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Create category | Admin</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <title>Create Category | Admin</title>
 
 </head>
 
 <body>
 
-<h1>Create Category</h1>
+<div layout:fragment="content">
 
-<a href="/admin/posts/">Back</a>
+    <h1 class="uk-align-left uk-margin-remove-bottom">Create category</h1>
 
-<form th:action="@{/admin/categories/create-category}" th:object="${category}" method="post">
+    <a href="/admin/categories" class="uk-button uk-button-primary uk-align-right uk-margin-remove-bottom uk-margin-small-top">Back</a>
 
-    <div class="form-group">
-        <label for="name">category name</label>
-        <input type="text" class="form-control" id="name" th:field="*{name}" required="true" />
-    </div>
+    <div class="uk-clearfix"></div>
 
-    <input class="btn btn-primary" type="submit" value="Create category"/>
-</form>
+    <form th:action="@{/admin/categories/create-category}" th:object="${category}" method="post" class="uk-form-stacked uk-margin-top">
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="name">Name</label>
+            <input type="text" class="uk-input" id="name" th:field="*{name}" required="true" />
+        </div>
+
+        <input class="uk-button uk-button-primary" type="submit" value="Create category"/>
+
+    </form>
+
+</div>
 </body>
 </html>
