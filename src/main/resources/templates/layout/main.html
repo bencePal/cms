@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Homepage | cms</title>
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="/css/uikit/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script defer="defer" src="/js/uikit/uikit.min.js"></script>
+    <script defer="defer" src="/js/uikit/uikit-icons.min.js"></script>
+
+    <!-- Font awesome-->
+    <script defer="defer" src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+    <script defer="defer" src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+
+    <!--custom css-->
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="uk-container uk-container-small">
+
+        <div th:replace="layout/fragments/header :: header"></div>
+
+        <div class="uk-grid">
+            <div class="content uk-width-3-4" layout:fragment="content"></div>
+            <div th:replace="layout/fragments/right-column :: right-column"></div>
+        </div>
+
+        <div th:replace="layout/fragments/footer :: footer"></div>
+
+    </div>
+</body>
+</html>

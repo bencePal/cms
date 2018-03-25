@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<nav class="uk-navbar-container" uk-navbar="mode: hover" th:fragment="menu">
+    <ul class="uk-navbar-nav">
+        <th:block>
+            <li><a href="/">Home</a></li>
+            <li th:each="page : ${menu}">
+                <a th:text="${page.title}" th:href="@{'/page/' + ${page.id}}"></a>
+            </li>
+        </th:block>
+    </ul>
+</nav>
+
+</body>
+</html>

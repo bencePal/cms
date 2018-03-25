@@ -1,31 +1,28 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout/main">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title> | Homepage | cms</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <title>Post | cms</title>
 
 </head>
 
 <body>
 
-<h1>this is the postpage</h1>
-<h3>nice header</h3>
-<a href="/">Back</a>
-    <h2 th:text="${post.title}"></h2>
+<div layout:fragment="content">
+
+    <h1 class="title" th:text="${post.title}">Title</h1>
     <p th:text="${post.content}"></p>
 
     <div class="categories">
-        <h3>Categories</h3>
         <th:block th:each="category : ${post.categories}">
             <a th:text="${category.name}" th:href="'/category/' + ${category.id}"></a>
         </th:block>
     </div>
-    <br />
+
+</div>
 
 </body>
 </html>

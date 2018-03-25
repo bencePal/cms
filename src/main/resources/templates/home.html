@@ -1,50 +1,40 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout/main">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <title>Homepage | cms</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
 
 </head>
 
 <body>
 
-    <h1>this is the homepage</h1>
-    <h3>nice header</h3>
-    <hr />
-    <h3>menüke</h3>
-    <ul>
-    <th:block>
-        <li th:each="page : ${pages}">
-            <a th:text="${page.title}" th:href="@{'/page/' + ${page.id}}"></a>
-        </li>
-    </th:block>
-    </ul>
-    <div th:each="post : ${posts}">
-        <h2 th:text="${post.title}"></h2>
-        <p>Posted: <span th:text="${#dates.format(post.posted, 'yyyy-MM-dd HH:mm')}"></span></p>
+    <div layout:fragment="content">
 
-        <div th:if="${#strings.length(post.content) ge 100}">
-            <p th:text="${#strings.substring(post.content, 0, 100) + ' ...'}"></p>
-            <a th:href="@{'/post/' + ${post.id}}">Read more</a>
-        </div>
-        <div th:if="${#strings.length(post.content) le 100} ">
-            <p th:text="${post.content}"></p>
-        </div>
-        <hr />
+        <article class="uk-article" th:each="post : ${posts}">
+            <h2>
+                <a th:href="@{'/post/' + ${post.id}}" th:text="${post.title}" class="uk-link-reset">Post title</a>
+            </h2>
+            <p class="uk-article-meta">Posted: <span th:text="${#dates.format(post.posted, 'yyyy-MM-dd HH:mm')}"></span></p>
+
+            <th:block th:if="${#strings.length(post.content) ge 300}">
+                <p th:text="${#strings.substring(post.content, 0, 300) + '...'}"></p>
+                <div class="uk-grid-small uk-child-width-auto" >
+                    <div>
+                        <a th:href="@{'/post/' + ${post.id}}" class="uk-button uk-button-text" href="#">Read more</a>
+                    </div>
+                </div>
+            </th:block>
+            <th:block th:if="${#strings.length(post.content) le 300}">
+                <p th:text="${post.content}"></p>
+            </th:block>
+            <hr class="uk-divider-icon" />
+        </article>
+
+
     </div>
-    <hr />
-    <hr />
-    <div class="categories">
-        <h3>Categories</h3>
-        <th:block th:each="category : ${categories}">
-            <a th:text="${category.name}" th:href="'/category/' + ${category.id}"></a>
-        </th:block>
-    </div>
-    <br /><br />
+
 </body>
 </html>
