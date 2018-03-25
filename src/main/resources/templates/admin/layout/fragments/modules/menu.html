@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<div class="menu" th:fragment="menu">
+
+    <nav class="uk-navbar-container" uk-navbar="mode: hover" th:fragment="menu">
+
+        <div class="uk-navbar-left">
+            <ul class="uk-navbar-nav">
+                <li><a href="/admin">Admin Home</a></li>
+            </ul>
+        </div>
+
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li><a href="/" target="_blank">Website</a></li>
+                <li class="uk-navbar-item">
+                    <form th:action="@{'/logout'}" method="post">
+                        <input class="uk-button uk-button-default" type="submit" value="logout"/>
+                    </form>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+</div>
+
+</body>
+</html>

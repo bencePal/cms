@@ -5,7 +5,7 @@
       xmlns:layout="http://www.w3.org/1999/xhtml"
       layout:decorator="admin/layout/main-admin">
 <head>
-    <title>Edit post | Admin</title>
+    <title>Edit page | Admin</title>
 
 </head>
 
@@ -13,14 +13,13 @@
 
 <div layout:fragment="content">
 
+    <h1 class="uk-align-left uk-margin-remove-bottom">Edit page</h1>
 
-    <h1 class="uk-align-left uk-margin-remove-bottom">Edit post</h1>
-
-    <a href="/admin/posts/" class="uk-button uk-button-primary uk-align-right uk-margin-remove-bottom uk-margin-small-top">Back</a>
+    <a href="/admin/pages/" class="uk-button uk-button-primary uk-align-right uk-margin-remove-bottom uk-margin-small-top">Back</a>
 
     <div class="uk-clearfix"></div>
 
-    <form th:action="@{'/admin/posts/update'}" th:object="${post}" method="post" class="uk-form-stacked uk-margin-top">
+    <form th:action="@{'/admin/pages/update'}" th:object="${page}" method="post" class="uk-form-stacked uk-margin-top">
 
         <div class="uk-margin">
             <label class="uk-form-label" for="title">Title</label>
@@ -35,18 +34,15 @@
         </div>
 
         <div class="uk-margin">
-            <label class="uk-form-label">Category</label>
-            <label th:each="category : ${allCategories}" class="uk-form-label">
+            <label class="uk-form-label">category</label>
+            <label class="uk-form-label" th:each="category : ${allCategories}">
                 <input class="uk-checkbox" type="checkbox" th:value="${category.id}" th:field="*{categories}"/>
                 <span th:text="${category.name}"></span>
             </label>
         </div>
 
-        <input class="uk-button uk-button-primary" type="submit" value="Update post"/>
-
+        <input class="uk-button uk-button-primary" type="submit" value="Update page"/>
     </form>
-
 </div>
-
 </body>
 </html>

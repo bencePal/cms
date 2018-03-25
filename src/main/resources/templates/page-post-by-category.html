@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout/main">
+<head>
+    <title>By categories | cms</title>
+
+</head>
+
+<body>
+
+
+
+<div layout:fragment="content">
+
+    <h1 class="title" th:text="'Content by ' + ${categoryName}">Categories</h1>
+
+    <h3>Posts</h3>
+    <ul>
+        <th:block th:each="post : ${posts}">
+        <li><a th:text="${post.title}" th:href="@{'/post/' + ${post.id}}"></a></li>
+        </th:block>
+    </ul>
+
+    <h3>Pages</h3>
+    <ul>
+        <th:block th:each="page : ${pages}">
+        <li><a th:text="${page.title}" th:href="@{'/page/' + ${page.id}}"></a></li>
+        </th:block>
+    </ul>
+</div>
+</body>
+</html>

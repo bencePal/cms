@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="admin/layout/main-admin">
+<head>
+    <title>Edit category | Admin</title>
+
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <h1 class="uk-align-left uk-margin-remove-bottom">Edit category</h1>
+
+    <a href="/admin/categories/" class="uk-button uk-button-primary uk-align-right uk-margin-remove-bottom uk-margin-small-top">Back</a>
+
+    <div class="uk-clearfix"></div>
+
+    <form th:action="@{'/admin/categories/update'}" th:object="${category}" method="post"  class="uk-form-stacked uk-margin-top">
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="title">Name</label>
+            <input type="text" class="uk-textarea" id="title" th:field="*{name}" required="true" />
+        </div>
+
+        <input type="hidden" id="hidden" th:field="*{id}" />
+
+        <input class="uk-button uk-button-primary" type="submit" value="Update category"/>
+
+    </form>
+
+</div>
+
+</body>
+</html>

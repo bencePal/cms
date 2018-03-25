@@ -1,0 +1,117 @@
+a {
+    transition: 0.2s;
+}
+.uk-container {
+    background: #fff;
+    position: relative;
+}
+
+.logo {
+    color: #222222;
+    font-size: 55px;
+    padding-left: 10px;
+}
+
+.logo:hover {
+    color: #797676;
+    text-decoration: none;
+}
+.logo span {
+    padding-left:10px;
+}
+
+.logo:hover span {
+    text-decoration: none;
+}
+
+.logo.admin {
+    color: #af021f;
+}
+
+.logo.admin:hover {
+    opacity: 0.8;
+}
+
+.title {
+
+}
+.content, .right-column, .left-column {
+    padding-top:20px;
+}
+
+.right-column {
+
+}
+
+.footer {
+    padding: 20px 0;
+}
+
+.categories a {
+    display: inline-block;
+    color: #ffffff;
+    background: #1e87f0;
+    padding: 0 5px;
+    margin-bottom: 5px;
+}
+
+.categories a:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.uk-article + .uk-article {
+    margin-top:25px;
+}
+
+.uk-totop {
+    position: absolute;
+    left: -100px;
+    bottom: 40px;
+    color: #ffffff;
+    background: #000;
+    border-radius: 2px;
+    padding: 0;
+    transition: 0.3s;
+    opacity: 0.9;
+}
+
+.uk-totop:hover {
+    color: #ffffff;
+    opacity: 1;
+}
+
+.uk-article:last-child .uk-divider-icon {
+    display: none;
+}
+
+.background {
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -100;
+    background: url('/image/bg.png') 0 repeat;
+}
+.login, .registration {
+    margin-top: 100px;
+    max-width: 350px;
+    padding: 40px;
+    margin-bottom:100px;
+}
+.login a, .registration a {
+
+}
+
+.uk-tile-muted {
+    background: #af021f;
+}
+.uk-tile-muted p {
+    color: #ffffff;
+}
+.uk-grid-collapse a:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+

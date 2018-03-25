@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="admin/layout/main-admin">
+<head>
+    <title>Categories | Admin</title>
+
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <h1 class="uk-align-left uk-margin-remove-bottom">Categories</h1>
+
+    <a href="/admin/categories/create-category" class="uk-button uk-button-primary uk-align-right uk-margin-remove-bottom uk-margin-small-top">Create category</a>
+
+    <div class="uk-clearfix"></div>
+
+    <div class="uk-overflow-auto">
+
+        <table class="uk-table uk-table-middle uk-table-responsive uk-table-divider uk-table-small uk-margin-top">
+            <tbody>
+                <tr th:each="category : ${categories}">
+                    <td>
+                        <span th:text="${category.name}"></span>
+                    </td>
+                    <td>
+                        <a class="uk-button uk-button-secondary" th:href="@{'/admin/categories/' + ${category.id}+ '/update'}">Update</a>
+                    </td>
+                    <td>
+                        <form th:action="@{'/admin/categories/' + ${category.id}+ '/delete'}" method="post">
+                            <input class="uk-button uk-button-danger" type="submit" value="Delete"/>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout/main">
+<head>
+    <title>Post | cms</title>
+
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <h1 class="title" th:text="${post.title}">Title</h1>
+    <p th:text="${post.content}"></p>
+
+    <div class="categories">
+        <th:block th:each="category : ${post.categories}">
+            <a th:text="${category.name}" th:href="'/category/' + ${category.id}"></a>
+        </th:block>
+    </div>
+
+</div>
+
+</body>
+</html>

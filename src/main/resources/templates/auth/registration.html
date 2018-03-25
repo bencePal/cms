@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Registration | cms</title>
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="/css/uikit/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script defer="defer" src="/js/uikit/uikit.min.js"></script>
+    <script defer="defer" src="/js/uikit/uikit-icons.min.js"></script>
+
+    <!--custom css-->
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="uk-container registration">
+
+    <h1>Registration</h1>
+
+    <form name="login" th:action="@{/registration}" th:object="${user}" method="post">
+
+        <div class="uk-margin">
+            <div th:if="${#fields.hasErrors('username')}" class="uk-alert-danger" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p th:errors="*{username}"></p>
+            </div>
+            <div class="uk-inline uk-width-1-1">
+                <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: user"></span>
+                <input class="uk-input" type="text" th:field="*{username}" id="username" name="username" placeholder="Username"  />
+            </div>
+        </div>
+
+
+
+        <div class="uk-margin">
+            <div th:if="${#fields.hasErrors('email')}" class="uk-alert-danger" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p th:errors="*{email}"></p>
+            </div>
+            <div class="uk-inline uk-width-1-1">
+                <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: mail"></span>
+                <input class="uk-input" type="text" th:field="*{email}" id="email" name="email" placeholder="Email" />
+            </div>
+        </div>
+
+
+
+        <div class="uk-margin">
+            <div th:if="${#fields.hasErrors('password')}" class="uk-alert-danger" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p th:errors="*{password}"></p>
+            </div>
+            <div class="uk-inline uk-width-1-1">
+                <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                <input class="uk-input" type="password" th:field="*{password}" id="password" name="password" placeholder="Password" />
+            </div>
+        </div>
+
+
+
+        <div class="uk-margin">
+            <div th:if="${#fields.hasErrors('passwordConfirm')}" class="uk-alert-danger" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p th:errors="*{passwordConfirm}"></p>
+            </div>
+            <div class="uk-inline uk-width-1-1">
+                <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                <input class="uk-input" type="password" th:field="*{passwordConfirm}" id="passwordConfirm" name="passwordConfirm" placeholder="Password" />
+            </div>
+        </div>
+
+
+
+        <button class="uk-button uk-button-primary uk-align-left uk-margin-remove" type="submit">Registration</button>
+        <a class="uk-link-text uk-align-right uk-margin-small-top uk-margin-remove-bottom" href="/admin">Back</a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

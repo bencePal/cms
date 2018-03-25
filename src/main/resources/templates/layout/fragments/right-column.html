@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+
+<div class="right-column uk-width-1-4" th:fragment="right-column">
+
+    <div class="categories">
+        <h2>Categories</h2>
+        <th:block th:each="category : ${allCategories}">
+            <a th:text="${category.name}" th:href="'/category/' + ${category.id}"></a>
+        </th:block>
+    </div>
+
+</div>
+
+</body>
+</html>

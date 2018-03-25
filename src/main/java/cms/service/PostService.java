@@ -32,4 +32,9 @@ public class PostService {
     public Post findPostById(Long id) {
         return postRepository.findOne(id);
     }
+
+    public List<Post> getAllPostByCategoryId(Long id) {
+        return postRepository.findAllByCategoriesId(id);
+    }
+
 }
