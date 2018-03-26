@@ -85,6 +85,6 @@ hs_err_pid*
 
 /src/main/resources/META-INF
 *.iml
-/src/main/resources/application.properties
+# /src/main/resources/application.properties
 
 /application.properties.variations
