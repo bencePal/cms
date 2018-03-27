@@ -34,7 +34,7 @@
         </div>
 
         <div class="uk-margin">
-            <label class="uk-form-label">category</label>
+            <label class="uk-form-label">Category</label>
             <label class="uk-form-label" th:each="category : ${allCategories}">
                 <input class="uk-checkbox" type="checkbox" th:value="${category.id}" th:field="*{categories}"/>
                 <span th:text="${category.name}"></span>
