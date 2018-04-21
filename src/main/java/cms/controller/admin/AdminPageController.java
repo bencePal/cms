@@ -30,6 +30,7 @@ public class AdminPageController {
     @RequestMapping(value = "/admin/pages", method = RequestMethod.GET)
     public String pageList(Model model) {
         List<Page> pages = pageService.getAllPage();
+        model.addAttribute("activePageNav", true);
         model.addAttribute("pages", pages);
         return "admin/page-list";
     }
@@ -37,6 +38,7 @@ public class AdminPageController {
     @RequestMapping(value = "/admin/pages/create-page", method = RequestMethod.GET)
     public String createPage(Model model) {
         model.addAttribute("allCategories", categoryService.getAllCategories());
+        model.addAttribute("activePageNav", true);
         model.addAttribute("page", new Page());
         return "admin/create-page";
     }

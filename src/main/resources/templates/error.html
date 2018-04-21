@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout/main">
+<head>
+    <title>Error | cms</title>
+
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <h1 th:text="${error}"></h1>
+    <p th:text="'Message: ' + ${message}"></p>
+    <p th:text="'Path: ' + ${path}"></p>
+    <p th:text="'Status: ' + ${status}"></p>
+    <p th:text="'Time: ' + ${timestamp}"></p>
+
+</div>
+
+</body>
+</html>

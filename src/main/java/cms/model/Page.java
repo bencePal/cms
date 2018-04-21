@@ -31,6 +31,8 @@ public class Page {
 
     private Timestamp posted;
 
+    private boolean menu = false;
+
     public long getId() {
         return id;
     }
@@ -77,5 +79,13 @@ public class Page {
 
     public void setPosted(Timestamp posted) {
         this.posted = posted;
+    }
+
+    public boolean isMenu() {
+        return menu;
+    }
+
+    public void setMenu(boolean menu) {
+        this.menu = menu;
     }
 }

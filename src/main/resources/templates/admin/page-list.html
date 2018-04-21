@@ -32,9 +32,14 @@
                     <a class="uk-button uk-button-secondary" th:href="@{'/admin/pages/' + ${page.id}+ '/update'}">Update</a>
                 </td>
                 <td>
-                    <form th:action="@{'/admin/pages/' + ${page.id}+ '/delete'}" method="post">
-                        <input class="uk-button uk-button-danger" type="submit" value="Delete"/>
-                    </form>
+                    <button class="uk-button delete-box-trigger" type="button">Delete</button>
+                    <div class="delete-box">
+                        <span class="uk-clearfix">Are you sure?</span>
+                        <form class="form-delete" th:action="@{'/admin/pages/' + ${page.id}+ '/delete'}" method="post">
+                            <input class="uk-button uk-button-danger button-delete uk-button-small" type="submit" value="Yes"/>
+                        </form>
+                        <button class="uk-button button-no-delete uk-button-secondary uk-button-small">No</button>
+                    </div>
                 </td>
             </tr>
         </tbody>

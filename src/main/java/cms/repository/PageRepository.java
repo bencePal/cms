@@ -13,4 +13,6 @@ public interface PageRepository extends JpaRepository<Page, Long> {
 
     List<Page> findAllByCategoriesId(Long id);
 
+    List<Page> findAllByMenuIsTrue();
+
 }
