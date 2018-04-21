@@ -24,12 +24,14 @@ public class AdminCategoryController {
     @RequestMapping(value = "/admin/categories", method = RequestMethod.GET)
     public String categoryList(Model model) {
         List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("activeCategoryNav", true);
         model.addAttribute("categories", categories);
         return "admin/category-list";
     }
 
     @RequestMapping(value = "/admin/categories/create-category", method = RequestMethod.GET)
     public String createCategory(Model model) {
+        model.addAttribute("activeCategoryNav", true);
         model.addAttribute("category", new Category());
         return "admin/create-category";
     }

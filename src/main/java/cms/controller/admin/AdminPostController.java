@@ -30,6 +30,7 @@ public class AdminPostController {
     @RequestMapping(value = "/admin/posts", method = RequestMethod.GET)
     public String postList(Model model) {
         List<Post> posts = postService.getAllPost();
+        model.addAttribute("activePostNav", true);
         model.addAttribute("posts", posts);
         return "admin/post-list";
     }
@@ -37,6 +38,7 @@ public class AdminPostController {
     @RequestMapping(value = "/admin/posts/create-post", method = RequestMethod.GET)
     public String createPost(Model model) {
         model.addAttribute("allCategories", categoryService.getAllCategories());
+        model.addAttribute("activePostNav", true);
         model.addAttribute("post", new Post());
         return "admin/create-post";
     }

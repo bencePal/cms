@@ -5,7 +5,7 @@
       xmlns:layout="http://www.w3.org/1999/xhtml"
       layout:decorator="layout/main">
 <head>
-    <title>By categories | cms</title>
+    <title th:text="${categoryName} + ' | cms'">By categories | cms</title>
 
 </head>
 
@@ -15,7 +15,7 @@
 
 <div layout:fragment="content">
 
-    <h1 class="title" th:text="'Content by ' + ${categoryName}">Categories</h1>
+    <h1 class="title" th:text="${categoryName}">Categories</h1>
 
     <h3>Posts</h3>
     <ul>
