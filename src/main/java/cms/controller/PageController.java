@@ -1,6 +1,7 @@
 package cms.controller;
 
 import cms.service.CategoryService;
+import cms.service.MenuService;
 import cms.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,16 +15,18 @@ public class PageController {
 
     private PageService pageService;
     private CategoryService categoryService;
+    private MenuService menuService;
 
     @Autowired
-    public PageController(PageService pageService, CategoryService categoryService) {
+    public PageController(PageService pageService, CategoryService categoryService, MenuService menuService) {
         this.pageService = pageService;
         this.categoryService = categoryService;
+        this.menuService = menuService;
     }
 
     @RequestMapping(path = "/page/{pageId}", method = RequestMethod.GET)
     public String pageDetails(@PathVariable Long pageId, Model model)  {
-        model.addAttribute("menu", pageService.getAllPage());
+        model.addAttribute("menu", menuService.getAllMenuItems());
         model.addAttribute("page", pageService.findPageById(pageId));
         model.addAttribute("allCategories", categoryService.getAllCategories());
         return "page";

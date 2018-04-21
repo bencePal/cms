@@ -1,6 +1,7 @@
 package cms.controller;
 
 import cms.service.CategoryService;
+import cms.service.MenuService;
 import cms.service.PageService;
 import cms.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,20 +16,20 @@ public class HomeController {
 
     private PostService postService;
     private CategoryService categoryService;
-    private PageService pageService;
+    private MenuService menuService;
 
     @Autowired
-    public HomeController(PostService postService, CategoryService categoryService, PageService pageService) {
+    public HomeController(PostService postService, CategoryService categoryService, MenuService menuService) {
         this.postService = postService;
         this.categoryService = categoryService;
-        this.pageService = pageService;
+        this.menuService = menuService;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homePage(Model model) {
         model.addAttribute("posts", postService.getAllPost());
         model.addAttribute("allCategories", categoryService.getAllCategories());
-        model.addAttribute("menu", pageService.getAllPage());
+        model.addAttribute("menu", menuService.getAllMenuItems());
         return "home";
     }
 }
