@@ -1,3 +1,11 @@
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    background: #ffffff url("../image/bg.jpg") 0 0 repeat;
+}
+
 a {
     transition: 0.2s;
 }
@@ -10,6 +18,8 @@ a {
     color: #222222;
     font-size: 55px;
     padding-left: 10px;
+    height: 82px;
+    display: inline-block;
 }
 
 .logo:hover {
@@ -33,7 +43,7 @@ a {
 }
 
 .title {
-
+    text-transform: capitalize;
 }
 .content, .right-column, .left-column {
     padding-top:20px;
@@ -53,6 +63,7 @@ a {
     background: #1e87f0;
     padding: 0 5px;
     margin-bottom: 5px;
+    text-transform: lowercase;
 }
 
 .categories a:hover {
@@ -84,24 +95,19 @@ a {
 .uk-article:last-child .uk-divider-icon {
     display: none;
 }
-
-.background {
-    overflow: auto;
-    position: fixed;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -100;
-    background: url('/image/bg.png') 0 repeat;
-}
 .login, .registration {
-    margin-top: 100px;
+    padding-top: 100px;
+}
+.login-container, .registration-container {
     max-width: 350px;
     padding: 40px;
     margin-bottom:100px;
 }
 .login a, .registration a {
 
+}
+.padding-top {
+    padding-top: 100px;
 }
 
 .uk-tile-muted {
@@ -115,3 +121,22 @@ a {
     opacity: 0.8;
 }
 
+.uk-table-small td {
+}
+
+.delete-box {
+    display: none;
+    margin-top: 5px;
+}
+
+.form-delete {
+    float: left;
+}
+.button-no-delete {
+    float: left;
+    background: darkcyan;
+}
+.button-no-delete:hover {
+    background: darkcyan;
+    opacity: 0.9;
+}
