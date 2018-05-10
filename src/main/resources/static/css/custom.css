@@ -21,7 +21,9 @@ a {
     height: 82px;
     display: inline-block;
 }
-
+.height-100 {
+    height: 100px;
+}
 .logo:hover {
     color: #797676;
     text-decoration: none;
@@ -96,12 +98,11 @@ a {
     display: none;
 }
 .login, .registration {
-    padding-top: 100px;
+
 }
 .login-container, .registration-container {
     max-width: 350px;
     padding: 40px;
-    margin-bottom:100px;
 }
 .login a, .registration a {
 
